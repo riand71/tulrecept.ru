@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Тульские Рецепты — печатный тульский пряник с фруктовой начинкой. Собственное производство в Туле." />
+  <meta name="theme-color" content="#7c1f28" />
+  <title>Тульские Рецепты — настоящий тульский пряник</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body id="top">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Тульские Рецепты — на главную">
+        <img class="brand-logo brand-logo-full" src="assets/logo-gold.png" alt="Тульские Рецепты">
+        <img class="brand-logo-compact" src="assets/logo-gold-compact.png" alt="Тульские Рецепты">
+      </a>
+      <button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#assortment">Ассортимент</a>
+        <a href="#flavors">Вкусы</a>
+        <a href="#advantages">Почему мы</a>
+        <a href="#process">Производство</a>
+        <a href="#buy">Где купить</a>
+        <a href="#partners">Партнёрам</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <div class="hero-copy reveal">
+          <h1 id="hero-title">Настоящий<br>тульский пряник</h1>
+          <p class="hero-subtitle">
+            <span>Медовый. Печатный. С фруктовой начинкой.</span>
+            <span>На сливочном масле.</span>
+          </p>
+          <div class="hero-actions">
+            <a class="btn hero-btn hero-btn-burgundy" href="#buy">
+              <span>Купить в Туле</span>
+            </a>
+            <a class="btn hero-btn hero-btn-cream js-ozon" href="https://ozon.ru/s/tulskie-retsepty">
+              <span>Купить на Ozon</span>
+            </a>
+            <a class="btn hero-btn hero-btn-burgundy" href="#partners">
+              <span>Стать партнёром</span>
+            </a>
+          </div>
+          <div class="made-tula" aria-label="Сделано в Туле"><span>Сделано в Туле</span></div>
+        </div>
+      </div>
+    </section>
+
+        <section class="section section-cream" id="assortment">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Формы, серии и размеры</span>
+          <h2>Ассортимент</h2>
+          <span class="ornament" aria-hidden="true">◆</span>
+        </header>
+
+        <div class="weight-tabs reveal" role="tablist" aria-label="Фильтр по ассортименту">
+          <button class="weight-tab active" data-filter="100"><span class="tab-text">100 г</span></button>
+          <button class="weight-tab" data-filter="200"><span class="tab-text">200 г</span></button>
+          <button class="weight-tab" data-filter="300"><span class="tab-text">300 г</span></button>
+          <button class="weight-tab" data-filter="500"><span class="tab-text">500 г</span></button>
+          <button class="weight-tab special-tab special-kids" data-filter="kids"><span class="tab-icon" aria-hidden="true">🧸</span><span class="tab-text">Детская серия</span></button>
+          <button class="weight-tab special-tab special-newyear" data-filter="newyear"><span class="tab-icon" aria-hidden="true">❄</span><span class="tab-text">Новогодняя серия</span></button>
+        </div>
+
+        <div class="product-grid assortment-grid" id="product-grid">
+          <article class="product-card reveal" data-weight="100">
+            <div class="product-photo assortment-photo"><img src="assets/assort-round-100.webp" alt="Пряник круг 100 г"></div>
+            <h3>Круг</h3><p>100 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="100">
+            <div class="product-photo assortment-photo"><img src="assets/assort-bell-100.webp" alt="Пряник колокольчик 100 г"></div>
+            <h3>Колокольчик</h3><p>100 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="100">
+            <div class="product-photo assortment-photo"><img src="assets/assort-candle-100.webp" alt="Пряник свеча 100 г"></div>
+            <h3>Свеча</h3><p>100 г</p>
+          </article>
+
+          <article class="product-card reveal" data-weight="200" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-tula-200.webp" alt="Пряник Тула 200 г"></div>
+            <h3>Тула</h3><p>200 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="200" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-horseshoe-200.webp" alt="Пряник подкова 200 г"></div>
+            <h3>Подкова</h3><p>200 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="200" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-bear-200.webp" alt="Пряник мишка 200 г"></div>
+            <h3>Мишка</h3><p>200 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="200" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-puppy-200.webp" alt="Пряник щенок 200 г"></div>
+            <h3>Щенок</h3><p>200 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="200" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-kitty-200.webp" alt="Пряник котёнок 200 г"></div>
+            <h3>Котёнок</h3><p>200 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="200" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-rabbit-200.webp" alt="Пряник зайчик 200 г"></div>
+            <h3>Зайчик</h3><p>200 г</p>
+          </article>
+
+          <article class="product-card reveal" data-weight="300" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-heart-300.webp" alt="Пряник сердце 300 г"></div>
+            <h3>Сердце</h3><p>300 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="300" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-round-300.webp" alt="Пряник круг 300 г"></div>
+            <h3>Круг</h3><p>300 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="300" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-symbol-year-300.webp" alt="Пряник символ года 300 г"></div>
+            <h3>Символ года</h3><p>300 г</p>
+          </article>
+
+          <article class="product-card reveal single-center-card" data-weight="500" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-oval-500.webp" alt="Пряник овал 500 г"></div>
+            <h3>Овал</h3><p>500 г</p>
+          </article>
+
+          <article class="product-card reveal" data-weight="kids" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-bear-200.webp" alt="Детская серия мишка 200 г"></div>
+            <h3>Мишка</h3><p>200 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="kids" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-puppy-200.webp" alt="Детская серия щенок 200 г"></div>
+            <h3>Щенок</h3><p>200 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="kids" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-kitty-200.webp" alt="Детская серия котёнок 200 г"></div>
+            <h3>Котёнок</h3><p>200 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="kids" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-rabbit-200.webp" alt="Детская серия зайчик 200 г"></div>
+            <h3>Зайчик</h3><p>200 г</p>
+          </article>
+
+          <article class="product-card reveal" data-weight="newyear" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-bell-100.webp" alt="Новогодняя серия колокольчик 100 г"></div>
+            <h3>Колокольчик</h3><p>100 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="newyear" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-candle-100.webp" alt="Новогодняя серия свеча 100 г"></div>
+            <h3>Свеча</h3><p>100 г</p>
+          </article>
+          <article class="product-card reveal" data-weight="newyear" hidden>
+            <div class="product-photo assortment-photo"><img src="assets/assort-symbol-year-300.webp" alt="Новогодняя серия символ года 300 г"></div>
+            <h3>Символ года</h3><p>300 г</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section flavors-section" id="flavors">
+      <div class="container flavor-layout">
+        <div class="flavor-visual flavor-gallery reveal">
+          <figure class="flavor-photo flavor-photo-main">
+            <img src="assets/1Z8A6488.webp" alt="Крупный разлом тульского пряника с ягодной начинкой">
+          </figure>
+          <figure class="flavor-photo flavor-photo-secondary">
+            <img src="assets/1Z8A6472.webp" alt="Тульский пряник в разломе с ягодной начинкой">
+          </figure>
+          <div class="flavor-badge"><span>много</span><strong>начинки</strong></div>
+        </div>
+        <div class="flavor-copy reveal">
+          <span class="eyebrow">Самое вкусное внутри</span>
+          <h2>Вкусы и начинки</h2>
+          <p id="flavor-description" class="flavor-description">Густая яблочная начинка, мягкое медовое тесто и ароматные специи.</p>
+          <div class="flavor-chips flavor-icon-grid" role="list" aria-label="Вкусы начинок">
+            <button class="flavor-chip active" data-flavor="apple" aria-label="Яблоко"><img src="assets/flavor-apple.webp" alt="Яблоко"></button>
+            <button class="flavor-chip" data-flavor="strawberry" aria-label="Клубника"><img src="assets/flavor-strawberry.webp" alt="Клубника"></button>
+            <button class="flavor-chip" data-flavor="orange" aria-label="Апельсин"><img src="assets/flavor-orange.webp" alt="Апельсин"></button>
+            <button class="flavor-chip" data-flavor="currant" aria-label="Смородина"><img src="assets/flavor-currant.webp" alt="Смородина"></button>
+            <button class="flavor-chip" data-flavor="cherry" aria-label="Вишня"><img src="assets/flavor-cherry.webp" alt="Вишня"></button>
+            <button class="flavor-chip" data-flavor="lemon" aria-label="Лимон"><img src="assets/flavor-lemon.webp" alt="Лимон"></button>
+            <button class="flavor-chip" data-flavor="lingonberry" aria-label="Брусника"><img src="assets/flavor-lingonberry.webp" alt="Брусника"></button>
+            <button class="flavor-chip" data-flavor="plum" aria-label="Слива"><img src="assets/flavor-plum.webp" alt="Слива"></button>
+            <button class="flavor-chip" data-flavor="raspberry" aria-label="Малина"><img src="assets/flavor-raspberry.webp" alt="Малина"></button>
+          </div>
+          <aside class="ozon-card">
+            <div class="ozon-copy">
+              <p class="ozon-kicker">Готовые наборы</p>
+              <span>Попробуйте разные вкусы в один клик</span>
+            </div>
+            <a class="btn hero-btn hero-btn-cream ozon-cta js-ozon" href="https://ozon.ru/s/tulskie-retsepty" aria-label="Перейти на Ozon"><span>Купить на Ozon</span></a>
+            <small class="ozon-note">На Ozon можно выбрать комплект из нескольких пряников — удобно для подарка и знакомства с ассортиментом.</small>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-cream" id="advantages">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Главное без лишних слов</span>
+          <h2>Почему выбирают нас</h2>
+          <span class="ornament">◆</span>
+        </header>
+        <div class="advantage-grid advantage-grid-six">
+          <article class="advantage-card advantage-card-visual reveal">
+            <div class="advantage-image"><img src="assets/adv-board.webp" alt="Традиционная деревянная пряничная доска с медведем и пряником ТУЛА"></div>
+            <h3>Традиционные деревянные доски</h3>
+            <p>Формы с характерным рельефом и рисунком.</p>
+          </article>
+          <article class="advantage-card advantage-card-visual reveal">
+            <div class="advantage-image"><img src="assets/adv-honey.webp" alt="Натуральный мёд"></div>
+            <h3>Натуральный мёд из тульских пасек</h3>
+            <p>Насыщенный вкус и мягкая медовая сладость.</p>
+          </article>
+          <article class="advantage-card advantage-card-visual reveal">
+            <div class="advantage-image"><img src="assets/adv-butter.webp" alt="Сливочное масло"></div>
+            <h3>Тульское сливочное масло</h3>
+            <p>Настоящее сливочное масло в составе.</p>
+          </article>
+          <article class="advantage-card advantage-card-visual reveal">
+            <div class="advantage-image"><img src="assets/adv-fruit.webp" alt="Фрукты и ягоды для начинок"></div>
+            <h3>Тульские фруктовые начинки</h3>
+            <p>Яблоко, ягоды, цитрус и другие начинки.</p>
+          </article>
+          <article class="advantage-card advantage-card-visual reveal">
+            <div class="advantage-image"><img src="assets/adv-spices.webp" alt="Корица, кориандр и кардамон"></div>
+            <h3>Натуральные специи без ароматизаторов</h3>
+            <p>Корица, кардамон и кориандр.</p>
+          </article>
+          <article class="advantage-card advantage-card-visual reveal">
+            <div class="advantage-image"><img src="assets/adv-tula.webp" alt="Стилизованный Тульский кремль"></div>
+            <h3>Производство в Туле по традиционным технологиям</h3>
+            <p>Делаем пряники в Туле вручную и с заботой.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process-section" id="process">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">От теста до готового пряника</span>
+          <h2>Как мы делаем пряник</h2>
+          <span class="ornament">◆</span>
+        </header>
+
+        <div class="process-line" aria-label="Этапы производства">
+          <article class="process-card reveal"><div class="process-title-row"><span class="step">1</span><h3>Печатная форма</h3></div><div class="process-photo"><img src="assets/process-1.webp" alt="Деревянные печатные формы для тульских пряников"></div><p>Выбираем красивую печатную форму.</p></article>
+          <article class="process-card reveal"><div class="process-title-row"><span class="step">2</span><h3>Первый слой и начинка</h3></div><div class="process-photo"><img src="assets/process-2.webp" alt="Первый слой теста и фруктовая начинка в форме"></div><p>Укладываем первый слой и много начинки.</p></article>
+          <article class="process-card reveal"><div class="process-title-row"><span class="step">3</span><h3>Сборка пряника</h3></div><div class="process-photo"><img src="assets/process-3.webp" alt="Сборка и выбивание пряника из формы"></div><p>Запечатываем вторым слоем и выбиваем пряник.</p></article>
+          <article class="process-card reveal"><div class="process-title-row"><span class="step">4</span><h3>Выпечка</h3></div><div class="process-photo"><img src="assets/process-4.webp" alt="Пряники выпекаются в печи"></div><p>Выпекаем пряник в печи.</p></article>
+          <article class="process-card reveal"><div class="process-title-row"><span class="step">5</span><h3>Глазировка</h3></div><div class="process-photo"><img src="assets/process-5.webp" alt="Глазировка тульских пряников для сахарного узора"></div><p>Глазируем для получения сахарного узора.</p></article>
+          <article class="process-card reveal"><div class="process-title-row"><span class="step">6</span><h3>Упаковка</h3></div><div class="process-photo"><img src="assets/process-6.webp" alt="Упакованный готовый тульский пряник"></div><p>Упаковываем готовый пряник.</p></article>
+        </div>
+        <p class="process-note">Фотографии с нашего производства в Туле.</p>
+      </div>
+    </section>
+
+    <section class="section section-cream" id="buy">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Рядом с вами</span>
+          <h2>Где купить</h2>
+          <span class="ornament">◆</span>
+        </header>
+
+        <div class="buy-grid buy-grid-real">
+          <div class="map-card real-map-card reveal" aria-label="Карта точек продаж в Туле">
+            <iframe
+              id="retail-map"
+              class="retail-map yandex-retail-map"
+              src="https://yandex.ru/map-widget/v1/?ll=37.636000,54.197000&z=12&l=map&pt=37.619284,54.196280,pm2rdl1~37.620052,54.196302,pm2rdl2~37.615846,54.199452,pm2rdl3~37.609629,54.212480,pm2rdl4~37.627970,54.225490,pm2rdl5~37.588097,54.163279,pm2rdl6~37.645041,54.200415,pm2rdl7~37.691971,54.209409,pm2rdl8"
+              title="Яндекс Карта точек продаж в Туле"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="store-list store-list-real reveal" aria-label="Список магазинов">
+            <article class="store-item" data-store="1" tabindex="0">
+              <span class="store-number">1</span>
+              <div><strong>Магазин «Тульский Пряник»</strong><span>Тульский Кремль, Торговые ряды, пав. 9</span></div>
+              <a href="https://yandex.ru/maps/-/CXEnzQIO" target="_blank" rel="noopener">Маршрут ↗</a>
+            </article>
+            <article class="store-item" data-store="2" tabindex="0">
+              <span class="store-number">2</span>
+              <div><strong>Магазин «Белевские Сладости»</strong><span>Тульский Кремль, Торговые ряды, пав. 19</span></div>
+              <a href="https://yandex.ru/maps/-/CXEnzSO~" target="_blank" rel="noopener">Маршрут ↗</a>
+            </article>
+            <article class="store-item" data-store="3" tabindex="0">
+              <span class="store-number">3</span>
+              <div><strong>Магазин «Белевские Сладости»</strong><span>ул. Металлистов, д. 20</span></div>
+              <a href="https://yandex.ru/maps/-/CXEn7MmZ" target="_blank" rel="noopener">Маршрут ↗</a>
+            </article>
+            <article class="store-item" data-store="4" tabindex="0">
+              <span class="store-number">4</span>
+              <div><strong>Магазин «Белевские Сладости»</strong><span>ул. Арсенальная, д. 2А</span></div>
+              <a href="https://yandex.ru/maps/-/CXEn7O5V" target="_blank" rel="noopener">Маршрут ↗</a>
+            </article>
+            <article class="store-item" data-store="5" tabindex="0">
+              <span class="store-number">5</span>
+              <div><strong>Магазин «Белевские Сладости»</strong><span>ул. Октябрьская, д. 184</span></div>
+              <a href="https://yandex.ru/maps/-/CXErAQ3g" target="_blank" rel="noopener">Маршрут ↗</a>
+            </article>
+            <article class="store-item" data-store="6" tabindex="0">
+              <span class="store-number">6</span>
+              <div><strong>Магазин «Белевские Сладости»</strong><span>ул. Академика Павлова, д. 2 («Салют»)</span></div>
+              <a href="https://yandex.ru/maps/-/CXErAD3O" target="_blank" rel="noopener">Маршрут ↗</a>
+            </article>
+            <article class="store-item" data-store="7" tabindex="0">
+              <span class="store-number">7</span>
+              <div><strong>Магазин «Белевские Сладости»</strong><span>ул. Марата, д. 47/1</span></div>
+              <a href="https://yandex.ru/maps/-/CXErEN00" target="_blank" rel="noopener">Маршрут ↗</a>
+            </article>
+            <article class="store-item" data-store="8" tabindex="0">
+              <span class="store-number">8</span>
+              <div><strong>Магазин «Белевские Сладости»</strong><span>ул. Вильямса, д. 32</span></div>
+              <a href="https://yandex.ru/maps/-/CXErELpF" target="_blank" rel="noopener">Маршрут ↗</a>
+            </article>
+            <p class="placeholder-note">Список точек продаж будет пополняться.</p>
+          </div>
+        </div>
+
+        <div class="choice-row reveal">
+          <a class="choice-card ozon-choice js-ozon" href="https://ozon.ru/s/tulskie-retsepty" target="_blank" rel="noopener">
+            <div><small>Не нашли магазин рядом?</small><h3>Купить на Ozon</h3><p>Закажите пряники с доставкой.</p></div><span class="arrow">→</span>
+          </a>
+          <a class="choice-card partner-choice" href="#partners">
+            <div><small>Для магазинов и торговых точек</small><h3>Стать партнёром</h3><p>Добавьте наши пряники в свой ассортимент.</p></div><span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section partner-section" id="partners">
+      <div class="container partner-grid">
+        <div class="partner-photo reveal"><img src="assets/retail-collage.webp" alt="Коллаж из интерьерных фотографий пряников Тульские Рецепты"></div>
+        <div class="partner-copy reveal">
+          <span class="eyebrow">Для розничных магазинов и сетей</span>
+          <h2>Поставьте тульский пряник на свою полку</h2>
+          <ul>
+            <li>Разнообразие ассортимента по форме и массе</li>
+            <li>Широкий выбор фруктовых начинок</li>
+            <li>Выполнение всех требований законодательства по маркировке</li>
+            <li>Собственное производство в Туле</li>
+            <li>Максимальная свежесть продукции</li>
+            <li>Возможность разработки форм под заказ</li>
+          </ul>
+          <form class="partner-form" id="partner-form">
+            <label><span>Имя</span><input type="text" name="name" placeholder="Как к вам обращаться" required></label>
+            <label><span>Телефон</span><input type="tel" name="phone" placeholder="+7 ..." required></label>
+            <label><span>Почта</span><input type="email" name="email" placeholder="name@company.ru" required></label>
+            <label><span>Компания и город</span><input type="text" name="company_city" placeholder="Название компании и город"></label>
+            <button class="btn btn-primary" type="submit">Получить условия сотрудничества</button>
+            <small>Демонстрационная форма: подключение отправки делается при публикации.</small>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section trust-section" id="contacts">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Традиция и ответственность</span>
+          <h2>Сделано в Туле</h2>
+          <span class="ornament">◆</span>
+        </header>
+        <div class="trust-grid">
+          <div class="trust-logo-card reveal">
+            <img src="assets/logo-gold.png" alt="Тульские Рецепты">
+          </div>
+          <div class="docs reveal">
+            <h3>Документы и качество</h3>
+            <a href="assets/documents/declaration-of-conformity.pdf" target="_blank" rel="noopener">
+              <span class="doc-icon">▤</span>
+              <span><strong>Декларация о соответствии</strong><small>Открыть документ ↗</small></span>
+            </a>
+            <a href="assets/documents/certificate-tula-gingerbread.pdf" target="_blank" rel="noopener">
+              <span class="doc-icon">▤</span>
+              <span><strong>Свидетельство на право называться «Тульским пряником»</strong><small>Открыть документ ↗</small></span>
+            </a>
+          </div>
+          <div class="contacts reveal">
+            <h3>Контакты</h3>
+            <p>
+              <span>Телефон</span>
+              <a class="contact-link" href="tel:+79509190492">+7 950 919-04-92</a>
+            </p>
+            <p>
+              <span>E-mail</span>
+              <a class="contact-link" href="mailto:tul-recept@mail.ru">tul-recept@mail.ru</a>
+            </p>
+            <div class="contact-socials" aria-label="Мессенджеры и социальные сети">
+              <a class="contact-social" href="https://t.me/+79509190492" target="_blank" rel="noopener">Telegram ↗</a>
+              <span class="contact-social is-pending" aria-disabled="true" title="Прямая ссылка будет добавлена">MAX</span>
+              <a class="contact-social" href="https://vk.ru/tul_recept" target="_blank" rel="noopener">VK ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-wrap">
+      <div class="footer-inner footer-inner-clean">
+        <div class="tagline">С любовью и теплом ♡</div>
+        <div class="copyright">© <span id="year"></span> Тульские Рецепты</div>
+      </div>
+
+      <div class="footer-legal" aria-label="Реквизиты компании">
+        <div class="footer-legal-main">
+          <strong>ООО «Тульские рецепты»</strong>
+          <span>ОГРН 1257100001982</span>
+          <span>ИНН 7100062589</span>
+          <span>КПП 710001001</span>
+          <span>Дата регистрации 28.02.2025</span>
+        </div>
+        <div class="footer-address">
+          <span>Юридический адрес:</span>
+          <strong>300004, Тульская область, г. Тула, ул. Щегловская Засека, д. 36, помещ. 2, этаж 1, литер Е</strong>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-bar" aria-label="Быстрые действия">
+    <a href="#buy">Где купить</a><a class="js-ozon" href="https://ozon.ru/s/tulskie-retsepty" target="_blank" rel="noopener">Ozon</a>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
