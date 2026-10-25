@@ -1,0 +1,44 @@
+name: Deploy to IHC
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare deployment archive
+        run: |
+          tar \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='README.txt' \
+            --exclude='site.tar.gz' \
+            -czf site.tar.gz .
+
+      - name: Install SSH password helper
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+
+      - name: Add IHC host key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p 22 p1073030.ftp.ihc.ru >> ~/.ssh/known_hosts
+
+      - name: Upload and publish site
+        env:
+          SSHPASS: ${{ secrets.IHC_PASSWORD }}
+        run: |
+          sshpass -e scp -P 22 site.tar.gz p1073030@p1073030.ftp.ihc.ru:/home/p1073030/site.tar.gz
+          sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru \
+            'mkdir -p /home/p1073030/www/tulrecept.ru && \
+             find /home/p1073030/www/tulrecept.ru -mindepth 1 -maxdepth 1 ! -name ".well-known" -exec rm -rf {} + && \
+             tar -xzf /home/p1073030/site.tar.gz -C /home/p1073030/www/tulrecept.ru && \
+             rm -f /home/p1073030/site.tar.gz'
