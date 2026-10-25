@@ -67,9 +67,27 @@ document.querySelectorAll('.js-ozon').forEach(link => {
 if(CONFIG.phone) document.querySelector('[data-contact="phone"]').textContent = CONFIG.phone;
 if(CONFIG.email) document.querySelector('[data-contact="email"]').textContent = CONFIG.email;
 
-document.getElementById('partner-form')?.addEventListener('submit', e => {
+const partnerForm = document.getElementById('partner-form');
+const personalDataConsent = document.getElementById('personal-data-consent');
+const partnerSubmit = document.getElementById('partner-submit');
+
+function syncPartnerConsent(){
+  if(partnerSubmit) partnerSubmit.disabled = !personalDataConsent?.checked;
+}
+
+personalDataConsent?.addEventListener('change', syncPartnerConsent);
+syncPartnerConsent();
+
+partnerForm?.addEventListener('submit', e => {
   e.preventDefault();
-  showToast('Форма готова по дизайну. Перед публикацией подключим отправку заявок.');
+
+  if(!personalDataConsent?.checked){
+    showToast('Для отправки заявки необходимо дать согласие на обработку персональных данных.');
+    personalDataConsent?.focus();
+    return;
+  }
+
+  showToast('Форма пока демонстрационная: отправка заявок ещё не подключена.');
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();

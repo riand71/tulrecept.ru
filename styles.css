@@ -2697,3 +2697,242 @@ h3{font-size:26px;font-weight:650}
     font-size:11.5px;
   }
 }
+
+
+/* =========================================================
+   V2.51 — Personal data consent + legal pages
+   ========================================================= */
+
+#partners .partner-form .privacy-consent{
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:20px minmax(0,1fr);
+  align-items:start;
+  gap:10px;
+  margin-top:2px;
+  cursor:pointer;
+}
+
+#partners .partner-form .privacy-consent input{
+  width:18px;
+  height:18px;
+  min-height:0;
+  margin:2px 0 0;
+  accent-color:var(--burgundy);
+  cursor:pointer;
+}
+
+#partners .partner-form .privacy-consent span{
+  font-size:12px;
+  line-height:1.45;
+  color:var(--muted);
+}
+
+#partners .partner-form .privacy-consent a,
+#partners .partner-form .privacy-note a,
+.footer-privacy-links a{
+  color:var(--burgundy);
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+
+#partners .partner-form .privacy-note{
+  grid-column:1 / -1;
+  margin:-2px 0 2px 30px;
+  font-size:11px;
+  line-height:1.45;
+  color:var(--muted);
+}
+
+#partners .partner-form .btn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}
+
+#partners .partner-form .form-status-note{
+  grid-column:1 / -1;
+}
+
+.footer-privacy-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:6px 18px;
+  width:100%;
+  margin-top:4px;
+  font-size:10px;
+  line-height:1.4;
+}
+
+.footer-privacy-links a{
+  color:inherit;
+}
+
+.legal-page{
+  min-height:100vh;
+  background:#fffaf1;
+  color:var(--brown);
+}
+
+.legal-page .legal-header{
+  position:static;
+  padding:22px 0;
+  background:#5a241f;
+  border-bottom:1px solid rgba(244,211,151,.28);
+}
+
+.legal-page .legal-header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:22px;
+}
+
+.legal-page .legal-logo{
+  display:block;
+  width:150px;
+}
+
+.legal-page .legal-logo img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.legal-page .legal-back{
+  color:#f4d397;
+  font-size:14px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.legal-page .legal-main{
+  padding:54px 0 70px;
+}
+
+.legal-page .legal-document{
+  max-width:920px;
+  margin:0 auto;
+  padding:42px 46px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:#fffef9;
+  box-shadow:0 16px 42px rgba(75,43,30,.08);
+}
+
+.legal-page .legal-kicker{
+  display:block;
+  margin-bottom:9px;
+  color:#9c6b36;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.legal-page h1{
+  margin:0 0 12px;
+  font-size:clamp(38px,5vw,58px);
+  line-height:.98;
+  color:var(--brown);
+}
+
+.legal-page .legal-updated{
+  margin:0 0 30px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.legal-page .legal-document h2{
+  margin:30px 0 10px;
+  font-size:27px;
+  line-height:1.1;
+  color:var(--brown);
+}
+
+.legal-page .legal-document p,
+.legal-page .legal-document li{
+  font-size:15px;
+  line-height:1.7;
+  color:#60483e;
+}
+
+.legal-page .legal-document p{
+  margin:0 0 12px;
+}
+
+.legal-page .legal-document ul{
+  margin:8px 0 16px;
+  padding-left:22px;
+}
+
+.legal-page .legal-document a{
+  color:var(--burgundy);
+}
+
+.legal-page .legal-note{
+  margin:22px 0;
+  padding:16px 18px;
+  border-left:3px solid #b48945;
+  border-radius:0 12px 12px 0;
+  background:#f7ecd9;
+}
+
+.legal-page .legal-footer{
+  padding:22px 0 30px;
+  text-align:center;
+  color:#76594c;
+  font-size:11px;
+}
+
+@media (max-width:760px){
+  #partners .partner-form .privacy-consent,
+  #partners .partner-form .privacy-note,
+  #partners .partner-form .form-status-note{
+    grid-column:1;
+  }
+
+  #partners .partner-form .privacy-note{
+    margin-left:30px;
+  }
+
+  .footer-privacy-links{
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  }
+
+  .legal-page .legal-header{
+    padding:14px 0;
+  }
+
+  .legal-page .legal-logo{
+    width:118px;
+  }
+
+  .legal-page .legal-back{
+    font-size:12px;
+  }
+
+  .legal-page .legal-main{
+    padding:26px 0 48px;
+  }
+
+  .legal-page .legal-document{
+    padding:26px 18px;
+    border-radius:18px;
+  }
+
+  .legal-page .legal-document h2{
+    font-size:23px;
+  }
+
+  .legal-page .legal-document p,
+  .legal-page .legal-document li{
+    font-size:14px;
+    line-height:1.62;
+  }
+}
