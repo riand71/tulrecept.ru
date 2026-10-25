@@ -22,8 +22,7 @@ jobs:
             --exclude='.git' \
             --exclude='.github' \
             --exclude='README.txt' \
-            --exclude='site.tar.gz' \
-            -czf site.tar.gz .
+            -czf /tmp/site.tar.gz .
 
       - name: Install SSH password helper
         run: |
@@ -39,7 +38,7 @@ jobs:
         env:
           SSHPASS: ${{ secrets.IHC_PASSWORD }}
         run: |
-          sshpass -e scp -P 22 site.tar.gz p1073030@p1073030.ftp.ihc.ru:/home/p1073030/site.tar.gz
+          sshpass -e scp -P 22 /tmp/site.tar.gz p1073030@p1073030.ftp.ihc.ru:/home/p1073030/site.tar.gz
           sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru \
             'mkdir -p /home/p1073030/www/tulrecept.ru && \
              find /home/p1073030/www/tulrecept.ru -mindepth 1 -maxdepth 1 ! -name ".well-known" -exec rm -rf {} + && \
