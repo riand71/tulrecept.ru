@@ -2936,3 +2936,28 @@ h3{font-size:26px;font-weight:650}
     line-height:1.62;
   }
 }
+
+
+/* =========================================================
+   Production package — 404 page
+   ========================================================= */
+.not-found-page .legal-document{
+  text-align:center;
+  max-width:760px;
+}
+.not-found-page .error-code{
+  display:block;
+  margin-bottom:8px;
+  font-family:var(--serif);
+  font-size:clamp(72px,12vw,126px);
+  line-height:.85;
+  color:var(--burgundy);
+  opacity:.92;
+}
+.not-found-page .legal-document p{
+  max-width:560px;
+  margin:0 auto 24px;
+}
+.not-found-page .btn{
+  min-width:210px;
+}
