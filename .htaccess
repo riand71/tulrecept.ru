@@ -4,12 +4,11 @@ ErrorDocument 404 /404.html
 
 RewriteEngine On
 
-# Не мешаем проверке Let's Encrypt.
+# Не мешаем проверке и продлению Let's Encrypt.
 RewriteRule ^\.well-known/acme-challenge/ - [L]
 
-# Временные HTTP-редиректы до выпуска SSL.
-# После установки сертификата цель будет заменена на https://tulrecept.ru.
+# Канонический адрес сайта: https://tulrecept.ru
 RewriteCond %{HTTP_HOST} ^www\.tulrecept\.ru$ [NC,OR]
 RewriteCond %{HTTP_HOST} ^xn--e1aaajjf7affijc0c8de\.xn--p1ai$ [NC,OR]
 RewriteCond %{HTTP_HOST} ^www\.xn--e1aaajjf7affijc0c8de\.xn--p1ai$ [NC]
-RewriteRule ^(.*)$ http://tulrecept.ru/$1 [R=301,L,NE]
+RewriteRule ^(.*)$ https://tulrecept.ru/$1 [R=301,L,NE]
