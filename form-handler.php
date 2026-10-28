@@ -119,7 +119,6 @@ foreach (glob($storageDir . '/requests-*.jsonl') ?: [] as $file) {
 $to = 'tul-recept@mail.ru';
 $from = 'site@tulrecept.ru';
 $subjectText = 'Новая заявка на сотрудничество — tulrecept.ru';
-$subject = '=?UTF-8?B?' . base64_encode($subjectText) . '?=';
 
 $body = "Новая заявка с сайта tulrecept.ru\n\n"
       . "Номер заявки: {$requestId}\n"
@@ -132,19 +131,29 @@ $body = "Новая заявка с сайта tulrecept.ru\n\n"
       . "Версия согласия: {$consentVersion}\n"
       . "Версия политики: {$policyVersion}\n";
 
-$headers = [
-    'From: Тульские Рецепты <' . $from . '>',
-    'Reply-To: ' . $email,
-    'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=UTF-8',
-];
-
 $mailSent = false;
-if (function_exists('mail')) {
-    $mailSent = @mail($to, $subject, $body, implode("\r\n", $headers), '-f' . $from);
+$configPath = '/home/p1073030/data/tulrecept-mail.json';
+$mailerPath = __DIR__ . '/smtp-mailer.php';
+
+if (is_file($configPath) && is_file($mailerPath)) {
+    $config = json_decode((string)file_get_contents($configPath), true);
+    require_once $mailerPath;
+
+    if (is_array($config)) {
+        $mailSent = smtp_send(
+            $config,
+            $to,
+            $from,
+            'Тульские Рецепты',
+            $subjectText,
+            $body,
+            $email
+        );
+    }
 }
+
 if (!$mailSent) {
-    error_log('Partner form: email notification failed for request ' . $requestId);
+    error_log('Partner form: SMTP notification failed for request ' . $requestId);
 }
 
 respond(201, ['ok' => true, 'request_id' => $requestId]);

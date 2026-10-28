@@ -33,6 +33,29 @@ jobs:
           sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru \
             'mkdir -p /home/p1073030/data/tulrecept-partner-leads && chmod 700 /home/p1073030/data/tulrecept-partner-leads'
 
+      - name: Configure SMTP credentials
+        env:
+          SSHPASS: ${{ secrets.IHC_PASSWORD }}
+          SMTP_PASSWORD: ${{ secrets.IHC_SMTP_PASSWORD }}
+        run: |
+          umask 077
+          python3 - <<'PY'
+          import json, os
+          config = {
+              "host": "p1073030.mail.ihc.ru",
+              "port": 465,
+              "username": "site@tulrecept.ru",
+              "password": os.environ["SMTP_PASSWORD"],
+          }
+          with open("/tmp/tulrecept-mail.json", "w", encoding="utf-8") as f:
+              json.dump(config, f, ensure_ascii=False)
+          PY
+          sshpass -e scp -P 22 /tmp/tulrecept-mail.json \
+            p1073030@p1073030.ftp.ihc.ru:/home/p1073030/data/tulrecept-mail.json
+          sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru \
+            'chmod 600 /home/p1073030/data/tulrecept-mail.json'
+          rm -f /tmp/tulrecept-mail.json
+
       - name: Deploy site to IHC
         env:
           SSHPASS: ${{ secrets.IHC_PASSWORD }}
@@ -52,6 +75,26 @@ jobs:
           sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru '
             php -l /home/p1073030/www/tulrecept.ru/form-handler.php &&
             php -r '\''$f="/home/p1073030/data/tulrecept-partner-leads/.write-test"; if (file_put_contents($f,"ok")===false) exit(1); unlink($f);'\''
+          '
+
+      - name: Test authenticated SMTP
+        env:
+          SSHPASS: ${{ secrets.IHC_PASSWORD }}
+        run: |
+          sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru '
+            php -r '\''
+              $config=json_decode(file_get_contents("/home/p1073030/data/tulrecept-mail.json"),true);
+              require "/home/p1073030/www/tulrecept.ru/smtp-mailer.php";
+              $ok=smtp_send(
+                $config,
+                "tul-recept@mail.ru",
+                "site@tulrecept.ru",
+                "Тульские Рецепты",
+                "Проверка SMTP — tulrecept.ru",
+                "SMTP-настройка формы сайта работает. Это одноразовое тестовое письмо."
+              );
+              exit($ok ? 0 : 1);
+            '\''
           '
 
       - name: Configure secondary domain redirect
