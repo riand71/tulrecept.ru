@@ -54,30 +54,6 @@ jobs:
             php -r '\''$f="/home/p1073030/data/tulrecept-partner-leads/.write-test"; if (file_put_contents($f,"ok")===false) exit(1); unlink($f);'\''
           '
 
-      - name: Temporary mail diagnostics
-        env:
-          SSHPASS: ${{ secrets.IHC_PASSWORD }}
-        run: |
-          sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru \
-            'php /home/p1073030/www/tulrecept.ru/mail-diagnostic-8a3f.php'
-
-      - name: Temporary mail queue diagnostics
-        env:
-          SSHPASS: ${{ secrets.IHC_PASSWORD }}
-        run: |
-          sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru '
-            echo "=== COMMANDS ==="
-            command -v exim || true
-            command -v mailq || true
-            command -v sendmail || true
-            echo "=== SENDMAIL QUEUE ==="
-            /usr/sbin/sendmail -bp 2>&1 || true
-            echo "=== MAILQ ==="
-            mailq 2>&1 || true
-            echo "=== EXIM QUEUE ==="
-            exim -bp 2>&1 || true
-          '
-
       - name: Configure secondary domain redirect
         env:
           SSHPASS: ${{ secrets.IHC_PASSWORD }}
