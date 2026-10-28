@@ -77,26 +77,6 @@ jobs:
             php -r '\''$f="/home/p1073030/data/tulrecept-partner-leads/.write-test"; if (file_put_contents($f,"ok")===false) exit(1); unlink($f);'\''
           '
 
-      - name: Test authenticated SMTP
-        env:
-          SSHPASS: ${{ secrets.IHC_PASSWORD }}
-        run: |
-          sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru '
-            php -r '\''
-              $config=json_decode(file_get_contents("/home/p1073030/data/tulrecept-mail.json"),true);
-              require "/home/p1073030/www/tulrecept.ru/smtp-mailer.php";
-              $ok=smtp_send(
-                $config,
-                "tul-recept@mail.ru",
-                "site@tulrecept.ru",
-                "Тульские Рецепты",
-                "Проверка SMTP — tulrecept.ru",
-                "SMTP-настройка формы сайта работает. Это одноразовое тестовое письмо."
-              );
-              exit($ok ? 0 : 1);
-            '\''
-          '
-
       - name: Configure secondary domain redirect
         env:
           SSHPASS: ${{ secrets.IHC_PASSWORD }}
