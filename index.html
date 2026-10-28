@@ -371,8 +371,8 @@
           </ul>
           <form class="partner-form" id="partner-form" action="/form-handler.php" method="post">
             <label><span>Имя</span><input type="text" name="name" placeholder="Как к вам обращаться" autocomplete="name" maxlength="80" required></label>
-            <label><span>Телефон</span><input type="tel" name="phone" placeholder="+7 ..." autocomplete="tel" maxlength="40" required></label>
-            <label><span>Почта</span><input type="email" name="email" placeholder="name@company.ru" autocomplete="email" maxlength="254" required></label>
+            <label><span>Телефон</span><input type="tel" name="phone" id="partner-phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" inputmode="numeric" maxlength="18" pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}" required></label>
+            <label><span>Почта (необязательно)</span><input type="email" name="email" placeholder="name@company.ru" autocomplete="email" maxlength="254"></label>
             <label><span>Компания и город</span><input type="text" name="company_city" placeholder="Название компании и город" autocomplete="organization" maxlength="200"></label>
             <input type="hidden" name="consent_version" value="2026-10-28">
             <input type="hidden" name="privacy_policy_version" value="2026-10-28">

@@ -71,6 +71,36 @@ const partnerForm = document.getElementById('partner-form');
 const personalDataConsent = document.getElementById('personal-data-consent');
 const partnerSubmit = document.getElementById('partner-submit');
 const partnerFormStarted = document.getElementById('partner-form-started');
+const partnerPhone = document.getElementById('partner-phone');
+
+function formatPartnerPhone(value){
+  let digits = String(value || '').replace(/\D/g, '');
+
+  if(digits.startsWith('8')) digits = '7' + digits.slice(1);
+  if(digits.startsWith('7')) digits = digits.slice(1);
+  digits = digits.slice(0, 10);
+
+  if(!digits) return '';
+
+  let formatted = '+7';
+  if(digits.length > 0) formatted += ' (' + digits.slice(0, 3);
+  if(digits.length >= 3) formatted += ')';
+  if(digits.length > 3) formatted += ' ' + digits.slice(3, 6);
+  if(digits.length > 6) formatted += '-' + digits.slice(6, 8);
+  if(digits.length > 8) formatted += '-' + digits.slice(8, 10);
+
+  return formatted;
+}
+
+partnerPhone?.addEventListener('input', () => {
+  partnerPhone.value = formatPartnerPhone(partnerPhone.value);
+});
+
+partnerPhone?.addEventListener('paste', () => {
+  requestAnimationFrame(() => {
+    partnerPhone.value = formatPartnerPhone(partnerPhone.value);
+  });
+});
 
 function resetPartnerFormStarted(){
   if(partnerFormStarted) partnerFormStarted.value = String(Math.floor(Date.now() / 1000));

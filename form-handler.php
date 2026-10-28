@@ -55,10 +55,25 @@ $errors = [];
 if (text_length($name) < 2 || text_length($name) > 80) {
     $errors[] = 'Укажите имя.';
 }
-if (text_length($phone) < 5 || text_length($phone) > 40 || !preg_match('/^[0-9+()\-\s]+$/u', $phone)) {
-    $errors[] = 'Проверьте номер телефона.';
+$phoneDigits = preg_replace('/\D+/', '', $phone) ?? '';
+if (strlen($phoneDigits) === 11 && str_starts_with($phoneDigits, '8')) {
+    $phoneDigits = '7' . substr($phoneDigits, 1);
 }
-if (text_length($email) > 254 || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+if (strlen($phoneDigits) === 10) {
+    $phoneDigits = '7' . $phoneDigits;
+}
+if (strlen($phoneDigits) !== 11 || !str_starts_with($phoneDigits, '7')) {
+    $errors[] = 'Проверьте номер телефона.';
+} else {
+    $phone = sprintf(
+        '+7 (%s) %s-%s-%s',
+        substr($phoneDigits, 1, 3),
+        substr($phoneDigits, 4, 3),
+        substr($phoneDigits, 7, 2),
+        substr($phoneDigits, 9, 2)
+    );
+}
+if ($email !== '' && (text_length($email) > 254 || filter_var($email, FILTER_VALIDATE_EMAIL) === false)) {
     $errors[] = 'Проверьте адрес электронной почты.';
 }
 if (text_length($companyCity) > 200) {
@@ -125,7 +140,7 @@ $body = "Новая заявка с сайта tulrecept.ru\n\n"
       . "Дата и время: {$submittedAt}\n"
       . "Имя: {$name}\n"
       . "Телефон: {$phone}\n"
-      . "E-mail: {$email}\n"
+      . "E-mail: " . ($email !== '' ? $email : '—') . "\n"
       . "Компания и город: " . ($companyCity !== '' ? $companyCity : '—') . "\n\n"
       . "Согласие на обработку ПД: да\n"
       . "Версия согласия: {$consentVersion}\n"
