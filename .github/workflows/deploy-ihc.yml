@@ -37,3 +37,23 @@ jobs:
             --exclude='.well-known/' \
             -e "ssh -p 22" \
             ./ p1073030@p1073030.ftp.ihc.ru:/home/p1073030/www/tulrecept.ru/
+
+      - name: Configure secondary domain redirect
+        env:
+          SSHPASS: ${{ secrets.IHC_PASSWORD }}
+        run: |
+          sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru '
+            SECONDARY=/home/p1073030/www/xn--e1aaajjf7affijc0c8de.xn--p1ai
+            if [ ! -d "$SECONDARY" ]; then
+              echo "Secondary site directory not found"
+              find /home/p1073030/www -mindepth 1 -maxdepth 1 -type d -printf "%f\n"
+              exit 1
+            fi
+            printf "%s\n" \
+              "Options -Indexes" \
+              "" \
+              "RewriteEngine On" \
+              "RewriteRule ^\\.well-known/acme-challenge/ - [L]" \
+              "RewriteRule ^ https://tulrecept.ru%{REQUEST_URI} [R=301,L,NE]" \
+              > "$SECONDARY/.htaccess"
+          '
