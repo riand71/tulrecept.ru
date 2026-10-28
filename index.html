@@ -369,20 +369,25 @@
             <li>Максимальная свежесть продукции</li>
             <li>Возможность разработки форм под заказ</li>
           </ul>
-          <form class="partner-form" id="partner-form">
-            <label><span>Имя</span><input type="text" name="name" placeholder="Как к вам обращаться" required></label>
-            <label><span>Телефон</span><input type="tel" name="phone" placeholder="+7 ..." required></label>
-            <label><span>Почта</span><input type="email" name="email" placeholder="name@company.ru" required></label>
-            <label><span>Компания и город</span><input type="text" name="company_city" placeholder="Название компании и город"></label>
-            <input type="hidden" name="consent_version" value="2026-10-25">
-            <input type="hidden" name="privacy_policy_version" value="2026-10-25">
+          <form class="partner-form" id="partner-form" action="/form-handler.php" method="post">
+            <label><span>Имя</span><input type="text" name="name" placeholder="Как к вам обращаться" autocomplete="name" maxlength="80" required></label>
+            <label><span>Телефон</span><input type="tel" name="phone" placeholder="+7 ..." autocomplete="tel" maxlength="40" required></label>
+            <label><span>Почта</span><input type="email" name="email" placeholder="name@company.ru" autocomplete="email" maxlength="254" required></label>
+            <label><span>Компания и город</span><input type="text" name="company_city" placeholder="Название компании и город" autocomplete="organization" maxlength="200"></label>
+            <input type="hidden" name="consent_version" value="2026-10-28">
+            <input type="hidden" name="privacy_policy_version" value="2026-10-28">
+            <input type="hidden" name="form_started" id="partner-form-started" value="">
+            <label class="form-hp" aria-hidden="true">
+              <span>Сайт</span>
+              <input type="text" name="website" tabindex="-1" autocomplete="off">
+            </label>
             <label class="privacy-consent">
-              <input type="checkbox" name="personal_data_consent" id="personal-data-consent" required>
+              <input type="checkbox" name="personal_data_consent" id="personal-data-consent" value="1" required>
               <span>Я даю <a href="personal-data-consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a>.</span>
             </label>
             <p class="privacy-note">Перед отправкой ознакомьтесь с <a href="privacy-policy.html" target="_blank" rel="noopener">Политикой обработки персональных данных</a>.</p>
             <button class="btn btn-primary" id="partner-submit" type="submit" disabled>Получить условия сотрудничества</button>
-            <small class="form-status-note">Демонстрационная форма: отправка заявок пока не подключена.</small>
+            <small class="form-status-note">Заявка будет направлена в ООО «Тульские рецепты».</small>
           </form>
         </div>
       </div>

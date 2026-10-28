@@ -2961,3 +2961,24 @@ h3{font-size:26px;font-weight:650}
 .not-found-page .btn{
   min-width:210px;
 }
+
+
+/* =========================================================
+   Partner form — production submission
+   ========================================================= */
+.partner-form .form-hp{
+  position:absolute!important;
+  left:-10000px!important;
+  top:auto!important;
+  width:1px!important;
+  height:1px!important;
+  overflow:hidden!important;
+  opacity:0!important;
+  pointer-events:none!important;
+}
+.partner-form #partner-submit:disabled{
+  opacity:.58;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}

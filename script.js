@@ -70,16 +70,27 @@ if(CONFIG.email) document.querySelector('[data-contact="email"]').textContent = 
 const partnerForm = document.getElementById('partner-form');
 const personalDataConsent = document.getElementById('personal-data-consent');
 const partnerSubmit = document.getElementById('partner-submit');
+const partnerFormStarted = document.getElementById('partner-form-started');
+
+function resetPartnerFormStarted(){
+  if(partnerFormStarted) partnerFormStarted.value = String(Math.floor(Date.now() / 1000));
+}
 
 function syncPartnerConsent(){
   if(partnerSubmit) partnerSubmit.disabled = !personalDataConsent?.checked;
 }
 
 personalDataConsent?.addEventListener('change', syncPartnerConsent);
+resetPartnerFormStarted();
 syncPartnerConsent();
 
-partnerForm?.addEventListener('submit', e => {
+partnerForm?.addEventListener('submit', async e => {
   e.preventDefault();
+
+  if(!partnerForm.checkValidity()){
+    partnerForm.reportValidity();
+    return;
+  }
 
   if(!personalDataConsent?.checked){
     showToast('Для отправки заявки необходимо дать согласие на обработку персональных данных.');
@@ -87,7 +98,37 @@ partnerForm?.addEventListener('submit', e => {
     return;
   }
 
-  showToast('Форма пока демонстрационная: отправка заявок ещё не подключена.');
+  const originalText = partnerSubmit?.textContent || '';
+  if(partnerSubmit){
+    partnerSubmit.disabled = true;
+    partnerSubmit.textContent = 'Отправляем…';
+  }
+
+  try{
+    const response = await fetch(partnerForm.action, {
+      method: 'POST',
+      body: new FormData(partnerForm),
+      headers: {'Accept':'application/json'}
+    });
+
+    const result = await response.json().catch(() => ({}));
+    if(!response.ok || !result.ok){
+      throw new Error(result.message || 'Не удалось отправить заявку.');
+    }
+
+    partnerForm.reset();
+    resetPartnerFormStarted();
+    syncPartnerConsent();
+    showToast('Заявка отправлена. Мы свяжемся с вами.');
+  }catch(err){
+    showToast('Не удалось отправить заявку. Позвоните нам или попробуйте ещё раз.');
+    syncPartnerConsent();
+  }finally{
+    if(partnerSubmit){
+      partnerSubmit.textContent = originalText;
+      if(personalDataConsent?.checked) partnerSubmit.disabled = false;
+    }
+  }
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();

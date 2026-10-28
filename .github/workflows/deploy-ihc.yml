@@ -26,6 +26,13 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -p 22 p1073030.ftp.ihc.ru >> ~/.ssh/known_hosts
 
+      - name: Prepare private form storage
+        env:
+          SSHPASS: ${{ secrets.IHC_PASSWORD }}
+        run: |
+          sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru \
+            'mkdir -p /home/p1073030/data/tulrecept-partner-leads && chmod 700 /home/p1073030/data/tulrecept-partner-leads'
+
       - name: Deploy site to IHC
         env:
           SSHPASS: ${{ secrets.IHC_PASSWORD }}
