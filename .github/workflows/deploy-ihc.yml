@@ -77,17 +77,12 @@ jobs:
             php -r '\''$f="/home/p1073030/data/tulrecept-partner-leads/.write-test"; if (file_put_contents($f,"ok")===false) exit(1); unlink($f);'\''
           '
 
-      - name: Temporary inspect PHP logs
+      - name: Temporary tail site error log
         env:
           SSHPASS: ${{ secrets.IHC_PASSWORD }}
         run: |
           sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru '
-            echo "=== CANDIDATE LOG FILES ==="
-            find /home/p1073030 -maxdepth 5 -type f 2>/dev/null | grep -Ei "(log|error)" | tail -80 || true
-            echo "=== DATA TREE ==="
-            find /home/p1073030/data -maxdepth 3 -type f -printf "%p\n" 2>/dev/null | tail -80 || true
-            echo "=== RECENT SMTP/PARTNER MESSAGES ==="
-            grep -R -i -E "SMTP:|Partner form:" /home/p1073030 2>/dev/null | tail -80 || true
+            tail -120 /home/p1073030/logs/tulrecept.ru_error.log 2>/dev/null || true
           '
 
       - name: Configure secondary domain redirect
