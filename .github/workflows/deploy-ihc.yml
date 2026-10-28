@@ -45,6 +45,15 @@ jobs:
             -e "ssh -p 22" \
             ./ p1073030@p1073030.ftp.ihc.ru:/home/p1073030/www/tulrecept.ru/
 
+      - name: Verify partner form backend
+        env:
+          SSHPASS: ${{ secrets.IHC_PASSWORD }}
+        run: |
+          sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru '
+            php -l /home/p1073030/www/tulrecept.ru/form-handler.php &&
+            php -r '\''$f="/home/p1073030/data/tulrecept-partner-leads/.write-test"; if (file_put_contents($f,"ok")===false) exit(1); unlink($f);'\''
+          '
+
       - name: Configure secondary domain redirect
         env:
           SSHPASS: ${{ secrets.IHC_PASSWORD }}
