@@ -116,7 +116,7 @@ foreach (glob($storageDir . '/requests-*.jsonl') ?: [] as $file) {
     }
 }
 
-$to = 'tul-recept@mail.ru';
+$to = 'site@tulrecept.ru';
 $from = 'site@tulrecept.ru';
 $subjectText = 'Новая заявка на сотрудничество — tulrecept.ru';
 
@@ -140,7 +140,7 @@ if (is_file($configPath) && is_file($mailerPath)) {
     require_once $mailerPath;
 
     if (is_array($config)) {
-        $primarySent = smtp_send(
+        $mailSent = smtp_send(
             $config,
             $to,
             $from,
@@ -148,17 +148,6 @@ if (is_file($configPath) && is_file($mailerPath)) {
             $subjectText,
             $body
         );
-
-        $backupSent = smtp_send(
-            $config,
-            'site@tulrecept.ru',
-            $from,
-            'Тульские Рецепты',
-            '[Копия] ' . $subjectText,
-            $body
-        );
-
-        $mailSent = $primarySent || $backupSent;
     }
 }
 
