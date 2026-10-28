@@ -77,33 +77,6 @@ jobs:
             php -r '\''$f="/home/p1073030/data/tulrecept-partner-leads/.write-test"; if (file_put_contents($f,"ok")===false) exit(1); unlink($f);'\''
           '
 
-      - name: Temporary diagnose live SMTP
-        env:
-          SSHPASS: ${{ secrets.IHC_PASSWORD }}
-        run: |
-          sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru \
-            'rm -f /home/p1073030/data/tulrecept-smtp-diagnostic.log'
-          STARTED=$(date +%s)
-          curl -sS -o /tmp/form-diagnostic.json \
-            -X POST https://tulrecept.ru/form-handler.php \
-            -H 'Accept: application/json' \
-            -H 'Origin: https://tulrecept.ru' \
-            --data-urlencode 'name=SMTP диагностика' \
-            --data-urlencode 'phone=+7 900 000-00-00' \
-            --data-urlencode 'email=site@tulrecept.ru' \
-            --data-urlencode 'company_city=Тест, Тула' \
-            --data-urlencode 'personal_data_consent=1' \
-            --data-urlencode 'consent_version=2026-10-28' \
-            --data-urlencode 'privacy_policy_version=2026-10-28' \
-            --data-urlencode "form_started=$STARTED" \
-            --data-urlencode 'website='
-          cat /tmp/form-diagnostic.json
-          echo
-          sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru '
-            echo "=== SMTP DIAGNOSTIC ==="
-            cat /home/p1073030/data/tulrecept-smtp-diagnostic.log 2>/dev/null || echo "no diagnostic error recorded"
-          '
-
       - name: Configure secondary domain redirect
         env:
           SSHPASS: ${{ secrets.IHC_PASSWORD }}

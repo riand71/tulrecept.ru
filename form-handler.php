@@ -140,15 +140,25 @@ if (is_file($configPath) && is_file($mailerPath)) {
     require_once $mailerPath;
 
     if (is_array($config)) {
-        $mailSent = smtp_send(
+        $primarySent = smtp_send(
             $config,
             $to,
             $from,
             'Тульские Рецепты',
             $subjectText,
-            $body,
-            $email
+            $body
         );
+
+        $backupSent = smtp_send(
+            $config,
+            'site@tulrecept.ru',
+            $from,
+            'Тульские Рецепты',
+            '[Копия] ' . $subjectText,
+            $body
+        );
+
+        $mailSent = $primarySent || $backupSent;
     }
 }
 
