@@ -54,6 +54,13 @@ jobs:
             php -r '\''$f="/home/p1073030/data/tulrecept-partner-leads/.write-test"; if (file_put_contents($f,"ok")===false) exit(1); unlink($f);'\''
           '
 
+      - name: Temporary mail diagnostics
+        env:
+          SSHPASS: ${{ secrets.IHC_PASSWORD }}
+        run: |
+          sshpass -e ssh -p 22 p1073030@p1073030.ftp.ihc.ru \
+            'php /home/p1073030/www/tulrecept.ru/mail-diagnostic-8a3f.php'
+
       - name: Configure secondary domain redirect
         env:
           SSHPASS: ${{ secrets.IHC_PASSWORD }}
