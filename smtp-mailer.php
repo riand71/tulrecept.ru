@@ -1,6 +1,15 @@
 <?php
 declare(strict_types=1);
 
+function smtp_diag(string $message): void
+{
+    @file_put_contents(
+        '/home/p1073030/data/tulrecept-smtp-diagnostic.log',
+        date(DATE_ATOM) . ' ' . $message . PHP_EOL,
+        FILE_APPEND | LOCK_EX
+    );
+}
+
 function smtp_read_response($socket): array
 {
     $lines = [];
@@ -53,6 +62,7 @@ function smtp_send(
 
     if ($host === '' || $username === '' || $password === '' || $port < 1) {
         error_log('SMTP: incomplete configuration');
+        smtp_diag('incomplete configuration');
         return false;
     }
 
@@ -60,6 +70,7 @@ function smtp_send(
         filter_var($from, FILTER_VALIDATE_EMAIL) === false ||
         ($replyTo !== null && filter_var($replyTo, FILTER_VALIDATE_EMAIL) === false)) {
         error_log('SMTP: invalid email address');
+        smtp_diag('invalid email address');
         return false;
     }
 
@@ -85,6 +96,7 @@ function smtp_send(
 
     if (!is_resource($socket)) {
         error_log('SMTP: connection failed (' . $errno . ')');
+        smtp_diag('connection failed errno=' . $errno . ' err=' . $errstr);
         return false;
     }
 
@@ -145,6 +157,7 @@ function smtp_send(
         return true;
     } catch (Throwable $e) {
         error_log('SMTP: ' . $e->getMessage());
+        smtp_diag($e->getMessage());
         fclose($socket);
         return false;
     }
