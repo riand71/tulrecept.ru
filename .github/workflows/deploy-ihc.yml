@@ -89,10 +89,19 @@ jobs:
               exit 1
             fi
             printf "%s\n" \
+              "<html>" \
+              "  <head>" \
+              "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">" \
+              "  </head>" \
+              "  <body>Verification: 78b5ba98be1c69cf</body>" \
+              "</html>" \
+              > "$SECONDARY/yandex_78b5ba98be1c69cf.html"
+            printf "%s\n" \
               "Options -Indexes" \
               "" \
               "RewriteEngine On" \
               "RewriteRule ^\\.well-known/acme-challenge/ - [L]" \
+              "RewriteRule ^yandex_78b5ba98be1c69cf\\.html$ - [L]" \
               "RewriteRule ^ https://tulrecept.ru%{REQUEST_URI} [R=301,L,NE]" \
               > "$SECONDARY/.htaccess"
           '
